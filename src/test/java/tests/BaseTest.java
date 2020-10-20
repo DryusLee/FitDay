@@ -9,7 +9,7 @@ import utils.CapabilitiesGenerator;
 
 import java.util.concurrent.TimeUnit;
 
-public class BaseTest {
+abstract class BaseTest {
 
     public static final String USERNAME = "andrei123";
     public static final String PASSWORD = "@8ameMu&$be5VjG";
