@@ -1,6 +1,10 @@
 package tests;
+
+import org.openqa.selenium.SessionNotCreatedException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import pages.DashboardPage;
@@ -18,18 +22,24 @@ abstract class BaseTest {
     LoginPage loginPage;
     DashboardPage dashboardPage;
 
-    @BeforeMethod
-    public void StartTest() {
-        driver = new ChromeDriver(CapabilitiesGenerator.getChromeOptions());
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+    @BeforeMethod(description = "Opening Chrome Driver")
+    public void createDriver(ITestContext context) {
+
+        try {
+            driver = new ChromeDriver(CapabilitiesGenerator.getChromeOptions());
+        } catch (SessionNotCreatedException ex) {
+            Assert.fail("Браузер не был открыт. Проверьте, что используется корректная версия драйвера");
+            //log.fatal(ex.getLocalizedMessage());
+        }
         loginPage = new LoginPage(driver);
         dashboardPage = new DashboardPage(driver);
+        String variable = "driver";
+        System.out.println("Setting driver into context with variable name " + variable);
+        context.setAttribute(variable, driver);
     }
 
     @AfterMethod(alwaysRun = true)
-    public void closeBrowser(){
+    public void closeBrowser() {
         driver.close();
     }
 }
