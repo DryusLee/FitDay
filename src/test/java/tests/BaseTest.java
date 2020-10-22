@@ -9,9 +9,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import pages.DashboardPage;
 import pages.LoginPage;
+import pages.WeightLogPage;
 import utils.CapabilitiesGenerator;
-
-import java.util.concurrent.TimeUnit;
 
 abstract class BaseTest {
 
@@ -21,6 +20,7 @@ abstract class BaseTest {
     WebDriver driver;
     LoginPage loginPage;
     DashboardPage dashboardPage;
+    WeightLogPage weightLogPage;
 
     @BeforeMethod(description = "Opening Chrome Driver")
     public void createDriver(ITestContext context) {
@@ -33,6 +33,7 @@ abstract class BaseTest {
         }
         loginPage = new LoginPage(driver);
         dashboardPage = new DashboardPage(driver);
+        weightLogPage = new WeightLogPage(driver);
         String variable = "driver";
         System.out.println("Setting driver into context with variable name " + variable);
         context.setAttribute(variable, driver);
