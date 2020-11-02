@@ -31,6 +31,7 @@ abstract class BaseTest {
             Assert.fail("Браузер не был открыт. Проверьте, что используется корректная версия драйвера");
             //log.fatal(ex.getLocalizedMessage());
         }
+        driver.manage().window().maximize();
         loginPage = new LoginPage(driver);
         dashboardPage = new DashboardPage(driver);
         weightLogPage = new WeightLogPage(driver);
