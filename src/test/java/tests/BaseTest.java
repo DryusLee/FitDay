@@ -41,7 +41,7 @@ abstract class BaseTest {
     }
 
     @AfterMethod(alwaysRun = true)
-    public void closeBrowser() {
+   public void closeBrowser() {
         driver.close();
     }
 }

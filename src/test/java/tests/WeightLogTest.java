@@ -1,20 +1,31 @@
 package tests;
 
 import lombok.extern.log4j.Log4j2;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 @Log4j2
 public class WeightLogTest extends BaseTest {
+    String weightvalue = "200";
+    String weightLBS = weightvalue + " lbs";
+    String weightCurrentTableValue = weightvalue + ".0 lbs";
+    String start = "11/25/2020";
+    String goal = "02/25/2021";
+    String startWeight = "200";
+    String goalWeight = "100";
+    String date = "February 25, 2021";
+    String weightGoalFromTable = goalWeight + ".0 lbs";
 
     @Test
     public void editAndSaveWeightCurrentValueTest() {
         loginPage
                 .openPage()
                 .login(USERNAME, PASSWORD);
-        log.info("Page not opened");
         weightLogPage
                 .openPage()
-                .editAndSaveWeightCurrentValue("200");
+                .editAndSaveWeightCurrentValue(weightvalue);
+        Assert.assertEquals(weightLogPage.getCurrentWeight(), weightLBS);
+        Assert.assertEquals(weightLogPage.getWeightFromProgressTable(), weightCurrentTableValue);
 
     }
 
@@ -25,7 +36,8 @@ public class WeightLogTest extends BaseTest {
                 .login(USERNAME, PASSWORD);
         weightLogPage
                 .openPage()
-                .editAndSaveWeightGoalValue("10/25/2020", "02/15/2021", "200", "100")
-                .weightGoalCheckChanges();
+                .editAndSaveWeightGoalValue(start, goal, startWeight, goalWeight);
+        Assert.assertEquals(weightLogPage.getGoalWeightFromTable(), weightGoalFromTable);
+        Assert.assertEquals(weightLogPage.getDateFromTable(), date);
     }
 }

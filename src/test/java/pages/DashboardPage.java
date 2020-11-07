@@ -21,4 +21,8 @@ public class DashboardPage extends BasePage {
         driver.get("https://www.fitday.com/app/home/dashboard#21OCT2020");
         return this;
     }
+    @Override
+    public BasePage write(String text, By locator) {
+        return null;
+    }
 }

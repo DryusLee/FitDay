@@ -30,4 +30,9 @@ public class LoginPage extends BasePage {
         driver.findElement(LOGIN_BUTTON).click();
         return new DashboardPage(driver);
     }
+
+    @Override
+    public BasePage write(String text, By locator) {
+        return null;
+    }
 }
