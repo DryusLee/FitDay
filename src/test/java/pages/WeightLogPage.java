@@ -69,13 +69,16 @@ public class WeightLogPage extends BasePage {
     public String getCurrentWeight() {
         return driver.findElement(GET_CURRENT_WEIGHT).getText();
     }
-    public String getWeightFromProgressTable(){
+
+    public String getWeightFromProgressTable() {
         return driver.findElement(GET_CURRENT_WEIGHT_FROM_TABLE).getText();
     }
-    public String getGoalWeightFromTable(){
+
+    public String getGoalWeightFromTable() {
         return driver.findElement(GET_GOAL_WEIGHT_FROM_TABLE).getText();
     }
-    public String getDateFromTable(){
+
+    public String getDateFromTable() {
         return driver.findElement(GET_GOAL_DATE_FROM_TABLE).getText();
     }
 }
