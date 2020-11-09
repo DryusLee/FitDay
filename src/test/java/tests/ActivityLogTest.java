@@ -1,7 +1,9 @@
 package tests;
 
+import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import utils.Retry;
 
 public class ActivityLogTest extends BaseTest{
     String dancingSearch = "dancing";
@@ -11,7 +13,8 @@ public class ActivityLogTest extends BaseTest{
     String BasketballGameCals = "627";
     String BasketballNonGameCals = "235";
 
-    @Test
+    @Description("Add new dancing activity")
+    @Test(retryAnalyzer = Retry.class)
     public void addDancingActivityTest(){
         loginPage
                 .openPage()
@@ -25,7 +28,8 @@ public class ActivityLogTest extends BaseTest{
 
     }
 
-    @Test
+    @Description("Add new sexual activity")
+    @Test(retryAnalyzer = Retry.class)
     public void addSexualActivityTest(){
         loginPage
                 .openPage()
@@ -36,7 +40,8 @@ public class ActivityLogTest extends BaseTest{
         Assert.assertEquals(activityLogPage.getAddedCalsForSexualActivity(), sexualCals);
     }
 
-    @Test()
+    @Description("Add new basketball (non)game activity")
+    @Test(retryAnalyzer = Retry.class)
     public void addSportsTest(){
         loginPage
                 .openPage()

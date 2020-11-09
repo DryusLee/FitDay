@@ -1,5 +1,6 @@
 package tests;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.SessionNotCreatedException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -13,6 +14,7 @@ import pages.LoginPage;
 import pages.WeightLogPage;
 import utils.CapabilitiesGenerator;
 
+@Log4j2
 abstract class BaseTest {
 
     public static final String USERNAME = "andrei123";
@@ -30,8 +32,7 @@ abstract class BaseTest {
         try {
             driver = new ChromeDriver(CapabilitiesGenerator.getChromeOptions());
         } catch (SessionNotCreatedException ex) {
-            Assert.fail("Браузер не был открыт. Проверьте, что используется корректная версия драйвера");
-            //log.fatal(ex.getLocalizedMessage());
+            log.fatal(ex.getLocalizedMessage());
         }
         driver.manage().window().maximize();
         loginPage = new LoginPage(driver);
