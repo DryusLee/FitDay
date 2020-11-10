@@ -23,9 +23,11 @@ public class WeightLogTest extends BaseTest {
         loginPage
                 .openPage()
                 .login(USERNAME, PASSWORD);
+        log.info("Залогинено");
         weightLogPage
                 .openPage()
                 .editAndSaveWeightCurrentValue(weightvalue);
+        
         Assert.assertEquals(weightLogPage.getCurrentWeight(), weightLBS);
         Assert.assertEquals(weightLogPage.getWeightFromProgressTable(), weightCurrentTableValue);
 
