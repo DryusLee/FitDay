@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.Description;
 import lombok.extern.log4j.Log4j2;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -16,6 +17,7 @@ public class WeightLogTest extends BaseTest {
     String date = "February 25, 2021";
     String weightGoalFromTable = goalWeight + ".0 lbs";
 
+    @Description("Edit weight value")
     @Test
     public void editAndSaveWeightCurrentValueTest() {
         loginPage
@@ -29,6 +31,7 @@ public class WeightLogTest extends BaseTest {
 
     }
 
+    @Description("Edit weight goal value")
     @Test
     public void editAndSaveWeightGoalTest() {
         loginPage
