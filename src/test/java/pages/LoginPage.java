@@ -8,7 +8,6 @@ public class LoginPage extends BasePage {
     public static final By USERNAME_INPUT = By.id("username");
     public static final By PASSWORD_INPUT = By.name("Password");
     public static final By LOGIN_BUTTON = By.name("login");
-    //public static final String URL = "https://www.fitday.com/fitness/Login.html";
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -30,5 +29,10 @@ public class LoginPage extends BasePage {
         driver.findElement(PASSWORD_INPUT).sendKeys(password);
         driver.findElement(LOGIN_BUTTON).click();
         return new DashboardPage(driver);
+    }
+
+    @Override
+    public BasePage write(String text, By locator) {
+        return null;
     }
 }
